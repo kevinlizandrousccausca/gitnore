@@ -19,6 +19,7 @@ import androidx.compose.material3.NavigationRailItem
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,23 +44,35 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NavigationRailControl() {
     NavigationRail(
-
-
+        contentColor = Color.Gray
     ) {
         NavigationRailItem(
             selected = true,
-            onClick = {},
-            label = { Text("NavigationRail") },
-            icon = { Icon(Icons.Filled.Favorite, contentDescription = "Favorites") }
+            onClick = { /* Handle click */ },
+            label = { Text("Favorites", color = Color.Black) },
+            icon = {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Favorites",
+                    tint = Color.Red
+                )
+            }
         )
         NavigationRailItem(
             selected = false,
-            onClick = {},
-            label = { Text("NavigationRail") },
-            icon = { Icon(Icons.Filled.Place, contentDescription = "Places") }
+            onClick = { /* Handle click */ },
+            label = { Text("Places", color = Color.Gray) },
+            icon = {
+                Icon(
+                    Icons.Filled.Place,
+                    contentDescription = "Places",
+                    tint = Color.Gray
+                )
+            }
         )
     }
 }
+
 
 
 
