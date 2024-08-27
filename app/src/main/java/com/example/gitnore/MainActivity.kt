@@ -4,19 +4,24 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+
+import androidx.compose.material.icons.filled.Place
+
+import androidx.compose.material3.Icon
+
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.text.font.FontWeight
 
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 import com.example.gitnore.ui.theme.GitnoreTheme
 import java.lang.reflect.Modifier
@@ -27,7 +32,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GitnoreTheme {
-                 ViewHolaCurso()
+                 NavigationRailControl()
 
 
             }
@@ -36,32 +41,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ViewHolaCurso() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+fun NavigationRailControl() {
+    NavigationRail(
+
+
     ) {
-        Text(
-            text = "Welcome to the Course!",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold
+        NavigationRailItem(
+            selected = true,
+            onClick = {},
+            label = { Text("NavigationRail") },
+            icon = { Icon(Icons.Filled.Favorite, contentDescription = "Favorites") }
         )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = "Hello, Student!",
-            fontSize = 20.sp
+        NavigationRailItem(
+            selected = false,
+            onClick = {},
+            label = { Text("NavigationRail") },
+            icon = { Icon(Icons.Filled.Place, contentDescription = "Places") }
         )
     }
 }
 
 
 
-
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    ViewHolaCurso()
+    NavigationRailControl()
 }
